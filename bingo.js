@@ -18,7 +18,7 @@ function defaultResult() {
   return new Array(MAX + 1).fill(false);
 }
 
-module.export = {
+module.exports = {
   shuffled,
   defaultResult
 }
