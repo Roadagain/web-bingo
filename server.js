@@ -19,7 +19,10 @@ const server = require("http").createServer(function(request, response) {
   response.end(output);
 }).listen(8080);
 const io = require("socket.io").listen(server);
+const bingo = require("./bingo.js");
 
+let numbers = bingo.shuffled();
+let exist = bingo.defaultResult();
 
 io.sockets.on("connection", function (socket) {
   socket.on("publish", function (data) {
