@@ -16,6 +16,14 @@ const server = require("http").createServer(function(request, response) {
     response.writeHead(200, {"Content-Type": "text/javascript"});
     output = fs.readFileSync("./index.js", "utf-8");
   }
+  else if (pathname === "/result.css"){
+    response.writeHead(200, {"Content-Type": "text/css"});
+    output = fs.readFileSync("./result.css", "utf-8");
+  }
+  else if (pathname === "/result.js"){
+    response.writeHead(200, {"Content-Type": "text/javascript"});
+    output = fs.readFileSync("./result.js", "utf-8");
+  }
   else {
     response.writeHead(404, {"Content-Type": "text/plain"});
     output = "Not found";
