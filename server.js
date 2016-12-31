@@ -9,21 +9,21 @@ const server = require("http").createServer(function(request, response) {
     response.writeHead(200, {"Content-Type": "text/html"});
     output = fs.readFileSync("./index.html", "utf-8");
   }
+  else if (pathname === "/index.css"){
+    response.writeHead(200, {"Content-Type": "text/css"});
+    output = fs.readFileSync("./index.css", "utf-8");
+  }
   else if (pathname === "/index.js"){
     response.writeHead(200, {"Content-Type": "text/javascript"});
     output = fs.readFileSync("./index.js", "utf-8");
   }
-  else if (pathname === "/result.html"){
+  else if (pathname === "/roller.html"){
     response.writeHead(200, {"Content-Type": "text/html"});
-    output = fs.readFileSync("./result.html", "utf-8");
+    output = fs.readFileSync("./roller.html", "utf-8");
   }
-  else if (pathname === "/result.css"){
-    response.writeHead(200, {"Content-Type": "text/css"});
-    output = fs.readFileSync("./result.css", "utf-8");
-  }
-  else if (pathname === "/result.js"){
+  else if (pathname === "/roller.js"){
     response.writeHead(200, {"Content-Type": "text/javascript"});
-    output = fs.readFileSync("./result.js", "utf-8");
+    output = fs.readFileSync("./roller.js", "utf-8");
   }
   else {
     response.writeHead(404, {"Content-Type": "text/plain"});
