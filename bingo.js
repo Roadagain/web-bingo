@@ -6,9 +6,9 @@ function shuffled() {
 
   while (n) {
     let i = Math.floor(Math.random() * n--);
-    let t = array[n];
-    array[n] = array[i];
-    array[i] = t;
+    let t = numbers[n];
+    numbers[n] = numbers[i];
+    numbers[i] = t;
   }
 
   return numbers;
