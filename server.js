@@ -25,7 +25,20 @@ let numbers = bingo.shuffled();
 let exist = bingo.defaultResult();
 
 io.sockets.on("connection", function (socket) {
-  socket.on("publish", function (data) {
-    io.sockets.emit("publish", {value: data.value});
+  socket.on("connected", function() {
+    socket.emit("initialize", {exist});
+    conosle.log("connected");
+  });
+  socket.on("next", function () {
+    if (numbers){
+      let next = numbers.shift();
+      exist[next] = true;
+      io.sockets.emit("next", {next});
+    }
+  });
+  socket.on("reset", function () {
+    numbers = bingo.shuffled();
+    exist = bingo.defaultResult();
+    socket.emit("initialize", {exist});
   });
 });
