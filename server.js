@@ -20,7 +20,6 @@ const server = require("http").createServer(function(request, response) {
 }).listen(8080);
 const io = require("socket.io").listen(server);
 
-const userHash = {};
 
 io.sockets.on("connection", function (socket) {
   socket.on("publish", function (data) {
