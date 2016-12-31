@@ -5,7 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     window.alert("これ以上回せません");
   });
   socketio.on("next", function(next) {
-    console.log(next);
+    var state = getState(next);
+    var element = document.getElementById("showNext");
+
+    element.innerHTML = state.str;
+    element.style.color = state.color;
   });
 
   document.getElementById("next").addEventListener("click", function(ev) {
