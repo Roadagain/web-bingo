@@ -1,5 +1,15 @@
 var socketio;
 
+function setKeydown() {
+  document.addEventListener("keydown", function (e) {
+    if (e.key.match(/^[a-z]$/)){
+      var listeners = arguments.callee;
+      socketio.emit("next");
+      document.removeEventListener("keydown", listeners, false);
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   socketio = io.connect("http://localhost:8080");
 
@@ -21,4 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("reset").addEventListener("click", function(ev) {
     socketio.emit("reset");
   });
+
+  setKeydown();
 });
