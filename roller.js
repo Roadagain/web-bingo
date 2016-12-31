@@ -10,6 +10,19 @@ function setKeydown() {
   });
 }
 
+function showNext(result, colorize) {
+  var state = getState(result);
+  var element = document.getElementById("showNext");
+
+  element.innerHTML = state.str;
+  if (colorize){
+    element.style.color = state.color;
+  }
+  else {
+    element.style.color = "black";
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   socketio = io.connect("http://localhost:8080");
 
@@ -17,11 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.alert("これ以上回せません");
   });
   socketio.on("next", function(next) {
-    var state = getState(next);
-    var element = document.getElementById("showNext");
-
-    element.innerHTML = state.str;
-    element.style.color = state.color;
   });
 
   document.getElementById("next").addEventListener("click", function(ev) {
