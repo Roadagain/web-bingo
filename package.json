@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Roadagain/web-bingo/issues"
   },
-  "homepage": "https://github.com/Roadagain/web-bingo#readme"
+  "homepage": "https://github.com/Roadagain/web-bingo#readme",
+  "dependencies": {
+    "socket.io": "^1.7.2"
+  }
 }
