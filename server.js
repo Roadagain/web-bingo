@@ -33,7 +33,7 @@ io.sockets.on("connection", function (socket) {
     socket.emit("initialize", exist);
   });
   socket.on("next", function () {
-    if (numbers){
+    if (numbers.length > 0){
       let next = numbers.shift();
       exist[next] = true;
       io.sockets.emit("next", next);
