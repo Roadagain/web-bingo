@@ -35,6 +35,9 @@ io.sockets.on("connection", function (socket) {
       exist[next] = true;
       io.sockets.emit("next", {next});
     }
+    else {
+      socket.emit("overrun");
+    }
   });
   socket.on("reset", function () {
     numbers = bingo.shuffled();
