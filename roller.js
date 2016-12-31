@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.getElementById("reset").addEventListener("click", function(ev) {
+    document.getElementById("showNext").innerHTML = "";
     socketio.emit("reset");
   });
 
