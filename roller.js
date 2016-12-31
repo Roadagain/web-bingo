@@ -4,7 +4,7 @@ socketio.on("overrun", function() {
   window.alert("これ以上回せません");
 });
 socketio.on("next", function(next) {
-  window.alert(next);
+  console.log(next);
 });
 
 document.getElementById("next").addEventListener("click", function(ev) {
