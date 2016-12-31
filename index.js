@@ -2,14 +2,13 @@ function setVisible(num, visible) {
   var BINGO = "BINGO";
   var COLORS = ["red", "blue", "orange", "green", "purple"];
 
-  var id = BINGO[(num - 1) / 15 | 0] + ('0' + num).substr(-2);
-  var color = COLORS[(num - 1) / 15 | 0];
-  var element = document.getElementById(id);
+  var state = getState(num);
+  var element = document.getElementById(state.str);
   if (visible){
     element.style.color = "white";
   }
   else {
-    element.style.color = color;
+    element.style.color = state.color;
   }
 }
 
