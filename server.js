@@ -2,6 +2,7 @@ const fs = require("fs");
 const url = require("url");
 const server = require("http").createServer(function(request, response) {
   const pathname = require("url").parse(request.url, true).pathname;
+  console.log("reqiuired: " + pathname);
 
   let output;
   if (pathname === "/" || pathname === "/index.html"){
@@ -32,6 +33,8 @@ const server = require("http").createServer(function(request, response) {
 }).listen(8080);
 const io = require("socket.io").listen(server);
 const bingo = require("./bingo.js");
+
+console.log("server start");
 
 let numbers = bingo.shuffled();
 let exist = bingo.defaultResult();
