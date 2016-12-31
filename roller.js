@@ -1,5 +1,7 @@
+var socketio;
+
 document.addEventListener('DOMContentLoaded', function() {
-  var socketio = io.connect("http://localhost:8080");
+  socketio = io.connect("http://localhost:8080");
 
   socketio.on("overrun", function() {
     window.alert("これ以上回せません");
