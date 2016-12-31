@@ -36,7 +36,7 @@ io.sockets.on("connection", function (socket) {
     if (numbers){
       let next = numbers.shift();
       exist[next] = true;
-      io.sockets.emit("next", {next});
+      io.sockets.emit("next", next);
     }
     else {
       socket.emit("overrun");
