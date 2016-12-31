@@ -27,7 +27,6 @@ let exist = bingo.defaultResult();
 io.sockets.on("connection", function (socket) {
   socket.on("connected", function() {
     socket.emit("initialize", {exist});
-    conosle.log("connected");
   });
   socket.on("next", function () {
     if (numbers){
