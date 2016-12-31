@@ -30,7 +30,7 @@ let exist = bingo.defaultResult();
 
 io.sockets.on("connection", function (socket) {
   socket.on("connected", function() {
-    socket.emit("initialize", {exist});
+    socket.emit("initialize", exist);
   });
   socket.on("next", function () {
     if (numbers){
@@ -45,6 +45,6 @@ io.sockets.on("connection", function (socket) {
   socket.on("reset", function () {
     numbers = bingo.shuffled();
     exist = bingo.defaultResult();
-    socket.emit("initialize", {exist});
+    io.sockets.emit("initialize", exist);
   });
 });
