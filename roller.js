@@ -23,6 +23,17 @@ function showNext(result, colorize) {
   }
 }
 
+function roulette(result) {
+  var first = window.setInterval(function() {
+    showNext(Math.random() * 75 | 0 + 1);
+  }, 50);
+  window.setTimeout(function() {
+    window.clearInterval(first);
+    showNext(result);
+    setKeydown();
+  }, 3000);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   socketio = io.connect("http://localhost:8080");
 
@@ -30,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.alert("これ以上回せません");
   });
   socketio.on("next", function(next) {
+    roulette(next);
   });
 
   document.getElementById("next").addEventListener("click", function(ev) {
