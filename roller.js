@@ -25,7 +25,7 @@ function showNext(result, colorize = true) {
 
 function roulette(result) {
   var first = window.setInterval(function() {
-    showNext(Math.random() * 75 | 0 + 1);
+    showNext(Math.random() * 75 | 0 + 1, false);
   }, 50);
   window.setTimeout(function() {
     window.clearInterval(first);
