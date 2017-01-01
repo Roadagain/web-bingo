@@ -10,6 +10,17 @@ function setKeydown() {
   });
 }
 
+function removeClasses(element, start = 0, end = -1)
+{
+  if (end === -1){
+    end = element.classList.length;
+  }
+  var len = end - start;
+  for (var i = 0; i < len; ++i){
+    element.classList.remove(element.classList[start]);
+  }
+}
+
 function showNext(result, colorize = true) {
   var state = getState(result);
   var element = document.getElementById("showNext");
@@ -18,12 +29,12 @@ function showNext(result, colorize = true) {
   if (colorize){
     console.log(element.classList);
     if (element.classList.contains(state.symbol + "num") !== true){
-      element.classList.remove("empty");
+      removeClasses(element, 1);
       element.classList.add(state.symbol + "num");
     }
   }
   else if (element.classList.contains("empty") !== true){
-    element.classList.remove(element.classList[1]);
+      removeClasses(element, 1);
     element.classList.add("empty");
   }
 }
