@@ -10,7 +10,7 @@ function setKeydown() {
   });
 }
 
-function showNext(result, colorize) {
+function showNext(result, colorize = true) {
   var state = getState(result);
   var element = document.getElementById("showNext");
 
