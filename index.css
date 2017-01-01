@@ -1,15 +1,15 @@
 tr#B td {
-  background-color: red;
+  background-color: #ff0582;
 }
 tr#I {
-  background-color: blue;
+  background-color: deepskyblue;
 }
 tr#N {
-  background-color: orange;
+  background-color: darkorange;
 }
 tr#G {
-  background-color: green;
+  background-color: lime;
 }
 tr#O {
-  background-color: purple;
+  background-color: #a50082;
 }
