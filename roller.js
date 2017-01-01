@@ -27,7 +27,6 @@ function showNext(result, colorize = true) {
 
   element.innerHTML = state.str;
   if (colorize){
-    console.log(element.classList);
     if (element.classList.contains(state.symbol + "num") !== true){
       removeClasses(element, 2);
       element.classList.add(state.symbol + "num");
