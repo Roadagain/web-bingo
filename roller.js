@@ -29,12 +29,12 @@ function showNext(result, colorize = true) {
   if (colorize){
     console.log(element.classList);
     if (element.classList.contains(state.symbol + "num") !== true){
-      removeClasses(element, 1);
+      removeClasses(element, 2);
       element.classList.add(state.symbol + "num");
     }
   }
   else if (element.classList.contains("empty") !== true){
-      removeClasses(element, 1);
+      removeClasses(element, 2);
     element.classList.add("empty");
   }
 }

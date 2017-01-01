@@ -2,6 +2,10 @@ body {
   background-color: black;
 }
 
+.mono {
+  font-family: Menlo, Consolas, monospace;
+}
+
 .Bnum {
   color: #ff0582;
 }
