@@ -16,10 +16,14 @@ function showNext(result, colorize = true) {
 
   element.innerHTML = state.str;
   if (colorize){
-    element.style.color = state.color;
+    console.log(element.classList);
+    if (element.classList.contains(state.symbol + "num") !== true){
+      element.classList.remove("empty");
+      element.classList.add(state.symbol + "num");
+    }
   }
-  else {
-    element.style.color = "black";
+  else if (element.classList.contains("empty") === true){
+    element.classList.add("empty");
   }
 }
 
