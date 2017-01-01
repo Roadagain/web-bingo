@@ -66,6 +66,7 @@ function roulette(result) {
       if (start + current === result){
         window.clearInterval(third);
         setKeyup();
+        socketio.emit("show");
       }
 
       current = (current + 1) % 15;

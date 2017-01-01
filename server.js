@@ -52,19 +52,23 @@ let numbers = bingo.shuffled();
 let exist = bingo.defaultResult();
 
 io.sockets.on("connection", function (socket) {
+  let next;
   socket.on("connected", function() {
     socket.emit("initialize", exist);
   });
   socket.on("next", function () {
     if (numbers.length > 0){
-      let next = numbers.shift();
+      next = numbers.shift();
       exist[next] = true;
-      io.sockets.emit("next", next);
+      socket.emit("next", next);
       console.log("next: ", next);
     }
     else {
       socket.emit("overrun");
     }
+  });
+  socket.on("show", function() {
+    io.sockets.emit("show", next);
   });
   socket.on("reset", function () {
     numbers = bingo.shuffled();
