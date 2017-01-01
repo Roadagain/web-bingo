@@ -21,6 +21,34 @@ function removeClasses(element, start = 0, end = -1)
   }
 }
 
+function playVoice(state, result) {
+  var VOICE = "Voice";
+  var symbolVoice = document.getElementById(state.symbol + VOICE);
+  var noVoice = document.getElementById("no" + VOICE);
+  var ten = (result / 10 | 0) * 10;
+  var tenVoice = document.getElementById(ten + VOICE);
+  var one = result % 10;
+  var oneVoice = document.getElementById(one + VOICE);
+
+  symbolVoice.play();
+  window.setTimeout(function(){
+    noVoice.play();
+  }, 600);
+  window.setTimeout(function(){
+    if (tenVoice){
+      tenVoice.play();
+      window.setTimeout(function(){
+        oneVoice.play();
+        setKeyup();
+      }, 700);
+    }
+    else {
+      oneVoice.play();
+      setKeyup();
+    }
+  }, 1200);
+}
+
 function showNext(result, colorize = true) {
   var state = getState(result);
   var element = document.getElementById("showNext");
@@ -64,7 +92,7 @@ function roulette(result) {
       showNext(start + current);
       if (start + current === result){
         window.clearInterval(third);
-        setKeyup();
+        playVoice(state, result);
         socketio.emit("show");
       }
 
