@@ -1,3 +1,8 @@
+td {
+  font-family: Menlo, Consolas, monospace;
+  font-size: 4vw;
+}
+
 tr#B td {
   background-color: #ff0582;
 }
