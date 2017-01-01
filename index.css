@@ -1,15 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+td {
+  height: 19.5vh;
+}
+
+td:not(.symbol) {
+  font-size: 4.9vw;
+}
+
+.symbol {
+  padding: 0 2vw;
+  font-size: 6.5vw;
+}
+
 tr#B td {
-  background-color: red;
+  background-color: #ff0582;
 }
 tr#I {
-  background-color: blue;
+  background-color: deepskyblue;
 }
 tr#N {
-  background-color: orange;
+  background-color: darkorange;
 }
 tr#G {
-  background-color: green;
+  background-color: lime;
 }
 tr#O {
-  background-color: purple;
+  background-color: #a50082;
 }

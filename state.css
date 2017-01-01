@@ -1,0 +1,31 @@
+body {
+  background-color: black;
+}
+
+.mono {
+  font-family: Menlo, Consolas, monospace;
+}
+
+.Bnum {
+  color: #ff0582;
+}
+
+.Inum {
+  color: deepskyblue;
+}
+
+.Nnum {
+  color: darkorange;
+}
+
+.Gnum {
+  color: lime;
+}
+
+.Onum {
+  color: #a50082;
+}
+
+.empty {
+  color: gray;
+}
