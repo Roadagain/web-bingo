@@ -1,14 +1,11 @@
 function setVisible(num, visible) {
-  var BINGO = "BINGO";
-  var COLORS = ["red", "blue", "orange", "green", "purple"];
-
   var state = getState(num);
   var element = document.getElementById(state.str);
   if (visible){
-    element.style.color = "white";
+    element.style.color = "black";
   }
   else {
-    element.style.color = state.color;
+    element.classList.add(state.symbol + "num");
   }
 }
 
