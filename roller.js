@@ -1,11 +1,11 @@
 var socketio;
 
-function setKeydown() {
-  document.addEventListener("keydown", function (e) {
+function setKeyup() {
+  document.addEventListener("keyup", function (e) {
     if (e.key.match(/^[a-z]$/)){
       var listeners = arguments.callee;
       socketio.emit("next");
-      document.removeEventListener("keydown", listeners, false);
+      document.removeEventListener("keyup", listeners, false);
     }
   });
 }
@@ -65,7 +65,7 @@ function roulette(result) {
       showNext(start + current);
       if (start + current === result){
         window.clearInterval(third);
-        setKeydown();
+        setKeyup();
       }
 
       current = (current + 1) % 15;
@@ -92,5 +92,5 @@ document.addEventListener('DOMContentLoaded', function() {
     socketio.emit("reset");
   });
 
-  setKeydown();
+  setKeyup();
 });
