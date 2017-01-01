@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
   socketio.on("initialize", function(exist) {
     updateTable(exist);
   });
-  socketio.on("next", function(next) {
+  socketio.on("show", function(next) {
     setVisible(next, true);
   });
   socketio.emit("connected");
