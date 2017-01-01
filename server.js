@@ -37,6 +37,22 @@ const server = require("http").createServer(function(request, response) {
     response.writeHead(200, {"Content-Type": "text/javascript"});
     output = fs.readFileSync("./state.js", "utf-8");
   }
+  else if (pathname.match(/^\/voice\/[BINGO].mp3$/)){
+    response.writeHead(200, {"Content-Type": "audio/mp3"});
+    output = fs.readFileSync("." + pathname);
+  }
+  else if (pathname === "/voice/no.mp3"){
+    response.writeHead(200, {"Content-Type": "audio/mp3"});
+    output = fs.readFileSync("./voice/no.mp3");
+  }
+  else if (pathname.match(/^\/voice\/[1-9].mp3$/)){
+    response.writeHead(200, {"Content-Type": "audio/mp3"});
+    output = fs.readFileSync("." + pathname);
+  }
+  else if (pathname.match(/^\/voice\/[1-7]0.mp3$/)){
+    response.writeHead(200, {"Content-Type": "audio/mp3"});
+    output = fs.readFileSync("." + pathname);
+  }
   else {
     response.writeHead(404, {"Content-Type": "text/plain"});
     output = "Not found";
