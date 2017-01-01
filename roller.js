@@ -23,6 +23,7 @@ function showNext(result, colorize = true) {
     }
   }
   else if (element.classList.contains("empty") !== true){
+    element.classList.remove(element.classList[1]);
     element.classList.add("empty");
   }
 }
