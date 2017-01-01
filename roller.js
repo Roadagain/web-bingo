@@ -27,11 +27,34 @@ function roulette(result) {
   var first = window.setInterval(function() {
     showNext(Math.random() * 75 | 0 + 1, false);
   }, 50);
+
+  var state = getState(result);
+  var start = ((result - 1) / 15 | 0) * 15 + 1;
+  var current = 0;
+
   window.setTimeout(function() {
     window.clearInterval(first);
-    showNext(result);
-    setKeydown();
+
+    var second = window.setInterval(function() {
+      showNext(start + current);
+      current = (current + 1) % 15;
+    }, 200);
+    window.setTimeout(function() {
+      window.clearInterval(second);
+    }, 2000);
   }, 3000);
+
+  window.setTimeout(function() {
+    var third = window.setInterval(function() {
+      showNext(start + current);
+      if (start + current === result){
+        window.clearInterval(third);
+        setKeydown();
+      }
+
+      current = (current + 1) % 15;
+    }, 500);
+  }, 5000);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
