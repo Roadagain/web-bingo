@@ -1,23 +1,23 @@
 .Bnum {
-  color: red;
+  color: #ff0582;
 }
 
 .Inum {
-  color: blue;
+  color: deepskyblue;
 }
 
 .Nnum {
-  color: orange;
+  color: darkorange;
 }
 
 .Gnum {
-  color: green;
+  color: lime;
 }
 
 .Onum {
-  color: purple;
+  color: #a50082;
 }
 
 .empty {
-  color: black;
+  color: gray;
 }
