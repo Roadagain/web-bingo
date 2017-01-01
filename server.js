@@ -60,6 +60,7 @@ io.sockets.on("connection", function (socket) {
       let next = numbers.shift();
       exist[next] = true;
       io.sockets.emit("next", next);
+      console.log("next: ", next);
     }
     else {
       socket.emit("overrun");
