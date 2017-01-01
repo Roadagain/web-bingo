@@ -22,7 +22,7 @@ function showNext(result, colorize = true) {
       element.classList.add(state.symbol + "num");
     }
   }
-  else if (element.classList.contains("empty") === true){
+  else if (element.classList.contains("empty") !== true){
     element.classList.add("empty");
   }
 }
