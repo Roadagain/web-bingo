@@ -108,6 +108,7 @@ function roulette(result) {
       showNext(start + current);
       if (start + current === result){
         window.clearInterval(third);
+        stopBGM();
         playVoice(state, result);
         socketio.emit("show");
       }
