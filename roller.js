@@ -12,7 +12,7 @@ function playBGM() {
 
 function stopBGM() {
   var bgm = document.getElementById("bgm");
-  bgm.stop();
+  bgm.pause();
   bgm.currentTime = 0;
 }
 
