@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var reader = new FileReader();
 
     reader.addEventListener("load", function(ev) {
-      console.log(ev.target.result);
       loadBGM(ev.target.result);
     });
 
