@@ -1,5 +1,35 @@
 var socketio;
 
+function loadBGM(url) {
+  var bgm = document.getElementById("bgm");
+  bgm.src = url;
+  bgm.load();
+}
+
+function playBGM() {
+  document.getElementById("bgm").play();
+}
+
+function stopBGM() {
+  var bgm = document.getElementById("bgm");
+  bgm.pause();
+  bgm.currentTime = 0;
+}
+
+function attenuateBGMVolume(diff) {
+  var bgm = document.getElementById("bgm");
+  if (bgm.volume < diff){
+    bgm.volume = 0;
+  }
+  else {
+    bgm.volume -= diff;
+  }
+}
+
+function resetBGMVolume(volume) {
+  document.getElementById("bgm").volume = volume;
+}
+
 function setKeyup() {
   document.addEventListener("keyup", function (e) {
     if (e.key.match(/^[a-z]$/)){
@@ -67,6 +97,7 @@ function showNext(result, colorize = true) {
 }
 
 function roulette(result) {
+  playBGM();
   var first = window.setInterval(function() {
     showNext(Math.random() * 75 | 0 + 1, false);
   }, 50);
@@ -74,6 +105,7 @@ function roulette(result) {
   var state = getState(result);
   var start = ((result - 1) / 15 | 0) * 15 + 1;
   var current = 0;
+  var volume = document.getElementById("bgm").volume;
 
   window.setTimeout(function() {
     window.clearInterval(first);
@@ -92,10 +124,13 @@ function roulette(result) {
       showNext(start + current);
       if (start + current === result){
         window.clearInterval(third);
+        stopBGM();
+        resetBGMVolume(volume);
         playVoice(state, result);
         socketio.emit("show");
       }
 
+      attenuateBGMVolume(0.08);
       current = (current + 1) % 15;
     }, 500);
   }, 5000);
@@ -118,6 +153,17 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("reset").addEventListener("click", function(ev) {
     document.getElementById("showNext").innerHTML = "";
     socketio.emit("reset");
+  });
+
+  document.getElementById("bgmFile").addEventListener("change", function(ev) {
+    var file = ev.target.files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function(ev) {
+      loadBGM(ev.target.result);
+    });
+
+    reader.readAsDataURL(file);
   });
 
   setKeyup();
