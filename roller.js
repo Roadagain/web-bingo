@@ -1,5 +1,21 @@
 var socketio;
 
+function loadBGM(url) {
+  var bgm = document.getElementById("bgm");
+  bgm.src = url;
+  bgm.load();
+}
+
+function playBGM() {
+  document.getElementById("bgm").play();
+}
+
+function stopBGM() {
+  var bgm = document.getElementById("bgm");
+  bgm.stop();
+  bgm.currentTime = 0;
+}
+
 function setKeyup() {
   document.addEventListener("keyup", function (e) {
     if (e.key.match(/^[a-z]$/)){
@@ -118,6 +134,18 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("reset").addEventListener("click", function(ev) {
     document.getElementById("showNext").innerHTML = "";
     socketio.emit("reset");
+  });
+
+  document.getElementById("bgmFile").addEventListener("change", function(ev) {
+    var file = ev.target.files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function(ev) {
+      console.log(ev.target.result);
+      loadBGM(ev.target.result);
+    });
+
+    reader.readAsDataURL(file);
   });
 
   setKeyup();
