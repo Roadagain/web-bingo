@@ -29,6 +29,14 @@ const server = require("http").createServer(function(request, response) {
     response.writeHead(200, {"Content-Type": "text/javascript"});
     output = fs.readFileSync("./roller.js", "utf-8");
   }
+  else if (pathname === "/next.html"){
+    response.writeHead(200, {"Content-Type": "text/html"});
+    output = fs.readFileSync("./next.html", "utf-8");
+  }
+  else if (pathname === "/next.js"){
+    response.writeHead(200, {"Content-Type": "text/javascript"});
+    output = fs.readFileSync("./next.js", "utf-8");
+  }
   else if (pathname === "/state.css"){
     response.writeHead(200, {"Content-Type": "text/css"});
     output = fs.readFileSync("./state.css", "utf-8");
