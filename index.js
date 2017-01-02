@@ -18,7 +18,7 @@ function updateTable(table) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  var socketio = io.connect("http://localhost:8080");
+  var socketio = io.connect("http://bingo.roadagain.org");
 
   socketio.on("initialize", function(exist) {
     updateTable(exist);

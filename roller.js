@@ -137,7 +137,7 @@ function roulette(result) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  socketio = io.connect("http://localhost:8080");
+  socketio = io.connect("http://bingo.roadagain.org");
 
   socketio.on("overrun", function() {
     window.alert("これ以上回せません");

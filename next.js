@@ -27,7 +27,7 @@ function showNext(result, colorize = true) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  var socketio = io.connect("http://localhost:8080");
+  var socketio = io.connect("http://bingo.roadagain.org");
 
   socketio.on("show", function(next) {
     showNext(next);
