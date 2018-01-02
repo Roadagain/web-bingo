@@ -9,6 +9,7 @@ function setVisible(num, visible) {
     if (element.classList.contains(className) === false){
       element.classList.add(state.symbol + "num");
     }
+    element.style.color = "";
   }
 }
 
