@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", function() {
   var socketio = io.connect("http://localhost:8080");
 
   socketio.on("show", function(next) {
-    showNext(next);
+    if (next){
+      showNext(next);
+      socketio.emit("waitNext");
+    }
   });
 });

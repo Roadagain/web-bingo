@@ -74,6 +74,7 @@ console.log("server start");
 
 let numbers = bingo.shuffled();
 let exist = bingo.defaultResult();
+let canRoll = true;
 
 io.sockets.on("connection", function (socket) {
   let next;
@@ -81,10 +82,15 @@ io.sockets.on("connection", function (socket) {
     socket.emit("update", exist);
   });
   socket.on("next", function () {
+    if (canRoll === false){
+      return;
+    }
+
+    canRoll = false;
     if (numbers.length > 0){
       next = numbers.shift();
       exist[next] = true;
-      socket.emit("next", next);
+      io.sockets.emit("next", next);
       console.log("next: ", next);
     }
     else {
@@ -95,6 +101,9 @@ io.sockets.on("connection", function (socket) {
     io.sockets.emit("show", next);
     io.sockets.emit("update", exist);
   });
+  socket.on("waitNext", function() {
+    canRoll = true;
+  })
   socket.on("reset", function () {
     numbers = bingo.shuffled();
     exist = bingo.defaultResult();
