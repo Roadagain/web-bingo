@@ -84,7 +84,7 @@ io.sockets.on("connection", function (socket) {
     if (numbers.length > 0){
       next = numbers.shift();
       exist[next] = true;
-      socket.emit("next", next);
+      io.sockets.emit("next", next);
       console.log("next: ", next);
     }
     else {
