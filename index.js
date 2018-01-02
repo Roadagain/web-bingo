@@ -5,7 +5,11 @@ function setVisible(num, visible) {
     element.style.color = "black";
   }
   else {
-    element.classList.add(state.symbol + "num");
+    var className = state.symbol + "num";
+    if (element.classList.contains(className) === false){
+      element.classList.add(state.symbol + "num");
+    }
+    element.style.color = "";
   }
 }
 
