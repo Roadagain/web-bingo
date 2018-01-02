@@ -31,5 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   socketio.on("show", function(next) {
     showNext(next);
+    socketio.emit("waitNext");
   });
 });
