@@ -78,7 +78,7 @@ let exist = bingo.defaultResult();
 io.sockets.on("connection", function (socket) {
   let next;
   socket.on("connected", function() {
-    socket.emit("initialize", exist);
+    socket.emit("update", exist);
   });
   socket.on("next", function () {
     if (numbers.length > 0){
@@ -93,10 +93,11 @@ io.sockets.on("connection", function (socket) {
   });
   socket.on("show", function() {
     io.sockets.emit("show", next);
+    io.sockets.emit("update", exist);
   });
   socket.on("reset", function () {
     numbers = bingo.shuffled();
     exist = bingo.defaultResult();
-    io.sockets.emit("initialize", exist);
+    io.sockets.emit("update", exist);
   });
 });

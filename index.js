@@ -20,11 +20,8 @@ function updateTable(table) {
 document.addEventListener("DOMContentLoaded", function() {
   var socketio = io.connect("http://localhost:8080");
 
-  socketio.on("initialize", function(exist) {
+  socketio.on("update", function(exist) {
     updateTable(exist);
-  });
-  socketio.on("show", function(next) {
-    setVisible(next, true);
   });
   socketio.emit("connected");
 });
